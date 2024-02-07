@@ -1,0 +1,357 @@
+
+/*/ BIG OBJECTS: BODY, BACKGROUND, CONTAINER, etc /*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    /* Background outside the container */
+    background-image: url(Resources/galaxy.jpg); 
+
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* Main content goes inside here */
+.container{
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    border: solid black 2px;
+
+    position: relative;
+    top: 30px;
+    overflow: hidden;
+}
+#background{
+    max-width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+/*/ THE TEXTBOX /*/
+.textContainer{
+    width: 400px;
+    height: 350px;
+    padding: 5px;
+    border: 4px solid rgb(255, 38, 110);
+    border-radius: 15%;
+    background-color: #eef;
+    box-shadow: 0px 0px 20px #fff;
+
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-align: center;
+    
+    animation: flip 4s backwards 1s linear;
+
+}
+.textBox{
+    width: 300px;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#head{
+    height: 50px;
+    display: block;
+    position: absolute;
+    top: 10px;
+}
+#text{
+    height: 650px;
+    position: absolute;
+    top: 100px;
+    font-size: 25px;
+}
+/*/ INTERRACTIVE OBJECTS /*/
+/* TELEPORTER GLOBE */
+#globeContainer{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 400px;
+    right: 110px;
+}
+#globe{
+    max-width: 100%;
+    position: absolute;
+    opacity: 0;
+
+    transition: all 1s linear 0s;
+}
+/* when hovering the area where the globe is,
+    it will become visible and spin around */
+#globeContainer:hover #globe{
+    cursor: pointer;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+    opacity: 1;
+}
+/* when clicking the globe, it will slightly grow,
+    to give the same touch as you get while clicking a button */
+#globe:active{
+    width: 290px;
+}
+
+/* ROSALINA */
+.rosalinaContainer{
+    width: 700px;
+    height: 800px;
+}
+#rosalina{
+    width: 700px;
+    position: absolute;
+
+    content: url(Resources/Rosalina.png);
+    
+    transition: all 2s ease 0s;
+    animation: twirl 7s backwards 0s;
+}
+/* when hovering, she will twirl around and change color */
+.rosalinaContainer:hover #rosalina{
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+    content: url(Resources/RosalinaRed.png);
+    width: 730px;
+}
+
+/*/ STYLING TEXT /*/
+#st1{
+    color: rgb(0, 219, 219);
+    font-weight: bold;
+}
+#st2{
+    color: rgb(235, 0, 0);
+    font-weight: bold;
+}
+#st3{
+    color: rgb(18, 187, 18);
+    font-weight: bold;
+}
+#st4{
+    font-weight: bold;
+}
+#st5{
+    color: rgb(218, 103, 198);
+    font-weight: bold;
+}
+
+/*/ KEYFRAMES /*/
+/* The textbox spins around at page load */
+@-webkit-keyframes flip{
+    0%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    25%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    50%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    100%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@-moz-keyframes flip{
+    0%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    25%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    50%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    100%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@-o-keyframes flip{
+    0%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    25%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    50%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    100%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@keyframes flip{
+    0%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    25%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    50%{ -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    100%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@-webkit-keyframes twirl{
+    0%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+        
+        -webkit-transform: translateX(1400px);
+        -moz-transform: translateX(1400px);
+        -o-transform: translateX(1400px);
+        transform: translateX(1400px);
+    }
+    70%{-webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    40%{ transform: scaleX(-1);}
+    50%{ transform: translateX(800px);
+        transform: scaleX(1)}
+    100%{-webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+/* Rosalina twirls onto the stage at page load */
+@-moz-keyframes twirl{
+    0%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+        
+        -webkit-transform: translateX(1400px);
+        -moz-transform: translateX(1400px);
+        -o-transform: translateX(1400px);
+        transform: translateX(1400px);
+    }
+    70%{-webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    40%{ transform: scaleX(-1);}
+    50%{ transform: translateX(800px);
+        transform: scaleX(1)}
+    100%{-webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@-o-keyframes twirl{
+    0%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+        
+        -webkit-transform: translateX(1400px);
+        -moz-transform: translateX(1400px);
+        -o-transform: translateX(1400px);
+        transform: translateX(1400px);
+    }
+    70%{-webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    40%{ transform: scaleX(-1);}
+    50%{ transform: translateX(800px);
+        transform: scaleX(1)}
+    100%{-webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}
+@keyframes twirl{
+    0%{ -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+        
+        -webkit-transform: translateX(1400px);
+        -moz-transform: translateX(1400px);
+        -o-transform: translateX(1400px);
+        transform: translateX(1400px);
+    }
+    70%{-webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    40%{ transform: scaleX(-1);}
+    50%{ transform: translateX(800px);
+        transform: scaleX(1)}
+    100%{-webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}

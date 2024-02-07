@@ -1,0 +1,905 @@
+/* BIG OBJECTS: CONTAINER, BACKGROUND, FORGROUND, LAYERS, PARALAX EFFECTS, etc */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    /* Background outside the container */
+    background-image: url(Resources/galaxy.jpg);
+
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* Main content goes inside here */
+.container{
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    border: solid black 2px;
+
+    position: relative;
+    top: 30px;
+    overflow: hidden;
+
+}
+#background{
+    max-width: 100%;
+    position: absolute;
+    z-index: -99999;
+}
+#forground{
+    max-width: 100%;
+    position: absolute;
+    z-index: -99;
+}
+#paralaxCastle{
+    width: 1200px;
+    height: 400px;
+    position: absolute;
+    bottom: 50px;
+
+    background-image: url(Resources/Paralax0.png);
+    background-repeat: repeat-x;
+    background-position: 0px, -100px;
+    background-size: cover;
+    z-index: -999;
+
+    animation: paralax 360s linear 0s infinite both;
+}
+@-webkit-keyframes paralax{
+    0%{ background-position-x: -2400px; }
+    100%{ background-position-x: 1200px; }
+}
+@-moz-keyframes paralax{
+    0%{ background-position-x: -2400px; }
+    100%{ background-position-x: 1200px; }
+}
+@-o-keyframes paralax{
+    0%{ background-position-x: -2400px; }
+    100%{ background-position-x: 1200px; }
+}
+@keyframes paralax{
+    0%{ background-position-x: -2400px; }
+    100%{ background-position-x: 1200px; }
+}
+#dark{      
+    /* makes the screen dark (dark clouds) by adding 
+    a black half-transparent layer on top of everything */
+    width: 1200px;
+    height: 800px;
+    background-color: black;
+    display: none;
+    opacity: 0.5;
+}
+/*/ INTERRACTIVE OBJECTS /*/
+
+/* TELEPORTER GLOBE */
+#globeContainer{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50px;
+    right: 250px;
+}
+#globe{
+    max-width: 100%;
+    position: absolute;
+    opacity: 0;
+
+    transition: all 1s linear 0s;
+    animation: fade 20s ease 0s infinite;
+}
+
+/* the globe fades in and out of the picture, 
+    to create a feeling of a far-away object in the sky,
+    that is shrouded in clouds now and then */
+@-webkit-keyframes fade{
+    0% { opacity: 0.1;}
+    50% { opacity: 0.7;}
+    100% { opacity: 0.1;}
+}
+@-moz-keyframes fade{
+    0% { opacity: 0.1;}
+    50% { opacity: 0.7;}
+    100% { opacity: 0.1;}
+}
+@-o-keyframes fade{
+    0% { opacity: 0.1;}
+    50% { opacity: 0.7;}
+    100% { opacity: 0.1;}
+}
+@keyframes fade{
+    0% { opacity: 0.1;}
+    50% { opacity: 0.7;}
+    100% { opacity: 0.1;}
+}
+
+/* when hovering the globe - it will flip around,
+    just to make it more "clickable" */
+#globeContainer:hover #globe{
+    cursor: pointer;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+    opacity: 1;
+}
+
+/* when clicking the globe, it will slightly grow,
+    to give the same touch as you get while clicking a button */
+#globe:active{
+    width: 290px;
+}
+
+/* SMILING CLOUD */
+#cloud{
+    width: 200px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    z-index: 1;
+    content: url(Resources/Cloud.png);
+
+    animation: cloudMove 30s linear 5s infinite both;
+}
+
+/* The cloud will move across the screen, until you hover it */
+@-webkit-keyframes cloudMove{
+    0%{left: -500px;}
+    100%{left: 1200px;}
+}
+@-moz-keyframes cloudMove{
+    0%{left: -500px;}
+    100%{left: 1200px;}
+}
+@-o-keyframes cloudMove{
+    0%{left: -500px;}
+    100%{left: 1200px;}
+}
+@keyframes cloudMove{
+    0%{left: -500px;}
+    100%{left: 1200px;}
+}
+
+/* when hovering the cloud it will stop to move, 
+    turn into a dark cloud, and make the entire screen go dark. 
+    Simulating a thunderstorm, or bad wheather */
+#cloud:hover{
+    cursor: pointer;
+    animation-play-state: paused;
+    content: url(Resources/DarkCloud.png);
+    top: 20px;
+}
+#cloud:hover ~ #dark{
+    display: block;
+}
+
+/* YOSHI */
+#yoshi{
+    height: 250px;
+    position: absolute;
+    right: 250px;
+    bottom: 75px;
+    content: url(Resources/Yosho.png);
+
+    animation: yoshMove 3s backwards 3s;
+
+    transition: all 0s linear 0s;
+}
+
+/* When loading the page, Yoshi will run in and kick
+    the shell, like a football */
+@-webkit-keyframes yoshMove{
+    0% { -webkit-transform: translateX(500px);
+        -moz-transform: translateX(500px);
+        -o-transform: translateX(500px);
+        transform: translateX(500px);
+        content: url(Resources/Yoshi.png);  
+    }
+    100% { -webkit-transform: translateX(0); 
+        -moz-transform: translateX(0); 
+        -o-transform: translateX(0); 
+        transform: translateX(0); 
+        content: url(Resources/Yoshi.png);  
+    }
+}
+@-moz-keyframes yoshMove{
+    0% { -webkit-transform: translateX(500px);
+        -moz-transform: translateX(500px);
+        -o-transform: translateX(500px);
+        transform: translateX(500px);
+        content: url(Resources/Yoshi.png);  
+    }
+    100% { -webkit-transform: translateX(0); 
+        -moz-transform: translateX(0); 
+        -o-transform: translateX(0); 
+        transform: translateX(0); 
+        content: url(Resources/Yoshi.png);  
+    }
+}
+@-o-keyframes yoshMove{
+    0% { -webkit-transform: translateX(500px);
+        -moz-transform: translateX(500px);
+        -o-transform: translateX(500px);
+        transform: translateX(500px);
+        content: url(Resources/Yoshi.png);  
+    }
+    100% { -webkit-transform: translateX(0); 
+        -moz-transform: translateX(0); 
+        -o-transform: translateX(0); 
+        transform: translateX(0); 
+        content: url(Resources/Yoshi.png); 
+    }
+}
+@keyframes yoshMove{
+    0% { -webkit-transform: translateX(500px);
+        -moz-transform: translateX(500px);
+        -o-transform: translateX(500px);
+        transform: translateX(500px);
+        content: url(Resources/Yoshi.png);  
+    }
+    100% { -webkit-transform: translateX(0); 
+        -moz-transform: translateX(0); 
+        -o-transform: translateX(0); 
+        transform: translateX(0); 
+        content: url(Resources/Yoshi.png);  
+    }
+}
+
+/* if you hover yoshi, he will stick out his tongue */
+#yoshi:hover{ 
+    cursor: pointer;
+    height: 220px;
+    content: url(Resources/YoshTongue.png);
+}
+
+/* THE GREEN SHELL */
+#shell{
+    width: 80px;
+    position: absolute;
+    left: -100px;
+    bottom: 75px;
+
+    transition: all 0s linear 0s;
+
+    animation: shellMove 5s both 3s;
+}
+
+/* from page load - roll onto the stage and be kicked by Yoshi */
+@-webkit-keyframes shellMove{
+    0% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+    50% { -webkit-transform: translateX(870px);
+        -moz-transform: translateX(870px);
+        -o-transform: translateX(870px);
+        transform: translateX(870px);
+    }
+    100% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@-moz-keyframes shellMove{
+    0% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+    50% { -webkit-transform: translateX(870px);
+        -moz-transform: translateX(870px);
+        -o-transform: translateX(870px);
+        transform: translateX(870px);
+    }
+    100% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@-o-keyframes shellMove{
+    0% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+    50% { -webkit-transform: translateX(870px);
+        -moz-transform: translateX(870px);
+        -o-transform: translateX(870px);
+        transform: translateX(870px);
+    }
+    100% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes shellMove{
+    0% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+    50% { -webkit-transform: translateX(870px);
+        -moz-transform: translateX(870px);
+        -o-transform: translateX(870px);
+        transform: translateX(870px);
+    }
+    100% { -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+/* LAKITU (THE TURLTE ON THE FLOATING CLOUD) */
+#lakituContain{
+    border-radius: 60%;
+    width: 105px;
+    height: 85px;
+    position: absolute;
+    left: -10px;
+    top: 90px;
+
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(50, 145, 137);
+
+    transition: all 0.2s linear 0s;
+}
+#lakitu{
+    width: 50px;
+    position: absolute;
+    left: 42px;
+    top: 20px;
+
+    z-index: 1;
+    opacity: 0;
+
+    transition: all 3s ease 0s;
+}
+
+/* when clicking and holding the Magical Cloud to the left,
+    it should glow in a pink color and
+    Lakitu should fly out on his cloud */
+#lakituContain:active {
+    background-color: #a2c2;
+    box-shadow: 5px solid hotpink;
+}
+#lakituContain:active #lakitu{
+    -webkit-transform:scale(6,6);
+    -moz-transform:scale(6,6);
+    -o-transform:scale(6,6);
+    transform:scale(6,6);
+
+    left: 500px;
+    top: 200px;
+
+    opacity: 1;
+}
+
+/* changing the cursor to a pointer, so it looks clickable */
+#lakituContain:hover{ 
+    cursor:pointer; 
+}
+
+/* PIRHANA PLANT */
+#pirhanaContain{
+    width: 170px;
+    height: 300px;
+    position: absolute;
+    right: 15px;
+    bottom: 250px;
+    overflow: hidden;
+    z-index: 4;
+}
+#pirhana{
+    width: 200px;
+    position: absolute;
+    bottom: -270px;
+
+    transition: all 2s ease 0s;
+}
+
+/* When hovering above the pipe,
+    Pirhana plant will come out to bite you */
+#pirhanaContain:hover #pirhana{
+    bottom:-140px
+}
+
+/*/ MARIO KART /*/
+#daisy{
+    width: 10px;
+    position: absolute;
+    left: 700px;
+    bottom: 300px;
+
+    animation: drive 20s ease-in 5s infinite both;
+}
+#mario{
+    width: 10px;
+    position: absolute;
+    left: 700px;
+    bottom: 300px;
+
+    animation: drive 20s ease-in 7s infinite both;
+}
+
+/* Daisy and Mario will drive from the back of the stage
+    to the front as they race Mario Kart */
+@-webkit-keyframes drive{
+    0% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    70% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    100% { -webkit-transform: scale(40,40);
+        -moz-transform: scale(40,40);
+        -o-transform: scale(40,40);
+        transform: scale(40,40);
+        left: -200px;
+        bottom: 100px;
+    }
+}
+@-moz-keyframes drive{
+    0% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    70% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    100% { -webkit-transform: scale(40,40);
+        -moz-transform: scale(40,40);
+        -o-transform: scale(40,40);
+        transform: scale(40,40);
+        left: -200px;
+        bottom: 100px;
+    }
+}
+@-o-keyframes drive{
+    0% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    70% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    100% { -webkit-transform: scale(40,40);
+        -moz-transform: scale(40,40);
+        -o-transform: scale(40,40);
+        transform: scale(40,40);
+        left: -200px;
+        bottom: 100px;
+    }
+}
+@keyframes drive{
+    0% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    70% { -webkit-transform: scale(0,0);
+        -moz-transform: scale(0,0);
+        -o-transform: scale(0,0);
+        transform: scale(0,0);
+        left: 700px;
+        bottom: 300px;
+    }
+    100% { -webkit-transform: scale(40,40);
+        -moz-transform: scale(40,40);
+        -o-transform: scale(40,40);
+        transform: scale(40,40);
+        left: -200px;
+        bottom: 100px;
+    }
+}
+
+/*/ OBJECTS AFFECTED BY THE CLICKABLE "BRICK" AND "?" BLOCKS /*/
+#marioShell{
+    width: 350px;
+    position: absolute;
+    bottom: 70px;
+    left: -500px;
+
+    transition: all 0s linear 0s;
+}
+#toad{
+    width: 150px;
+
+    position: absolute;
+    bottom: 65px;
+    left: -200px
+}
+#megaShroom{
+    width: 100px;
+
+    position: absolute;
+    bottom: 310px;
+    left: 50px;
+
+    visibility: hidden;
+    transition: all 0s linear 0s;
+}
+#star{
+    width: 100px;
+
+    position: absolute;
+    bottom: 310px;
+    left: 170px;
+
+    visibility: hidden;
+    transition: all 0s linear 0s;
+}
+.coins{
+    width: 60px;
+    position: absolute;
+    bottom: 310px;
+    visibility: hidden;
+}
+#coin1{
+    left: 13px;
+}
+#coin2{
+    left: 128px;
+}
+#coin3{
+    left: 243px;
+}
+
+/*/ ALL CLICKABLE BLOCKS /*/
+.blocks{
+    -webkit-appearance: none;
+
+    width: 60px;
+    height: 60px;
+
+    background: black;
+    
+    opacity: 0;
+    border-radius: 5px;
+
+    position: absolute;
+    bottom: 249px;
+
+    cursor: pointer;
+    
+}
+
+/* when clicking any of the blocks they will change into 
+    a slightly darker version of themselves,
+    to indicate that the blocks must be "un-clicked" 
+    to turn of the animation */
+.blocks:checked {
+    opacity: 0.2;
+}
+
+/* BLOCK 1 (UPPER QUESTIONMARK) */
+#block1{
+    left: 127px;
+    top: 259px;
+}
+/* when this block is clicked, yoshi will get on his bike
+    and drive out of the scene, away from the angry mario,
+    with the shells that he is throwing towards yoshi */
+#block1:checked ~ #yoshi{
+    content: url(Resources/YoshScoot.png);
+
+    animation: yoshDrive 5s ease 0s forwards;
+}
+#block1:checked ~ #marioShell{
+    animation: marioDrive 8s linear 1s both;
+}
+#block1:checked ~ #shell{
+    animation: marioDrive 4s linear 0s both;
+}
+@-webkit-keyframes yoshDrive{
+    0% { right: 250px;
+    }
+    20% { right: 300px;}
+    100% { right: -350px;
+    }
+}
+@-moz-keyframes yoshDrive{
+    0% { right: 250px;
+    }
+    20% { right: 300px;}
+    100% { right: -350px;
+    }
+}
+@-o-keyframes yoshDrive{
+    0% { right: 250px;
+    }
+    20% { right: 300px;}
+    100% { right: -350px;
+    }
+}
+@keyframes yoshDrive{
+    0% { right: 250px;
+    }
+    20% { right: 300px;}
+    100% { right: -350px;
+    }
+}
+@-webkit-keyframes marioDrive{
+    0% { left: -700px;}
+    100% { left: 1500px;}
+}
+@-moz-keyframes marioDrive{
+    0% { left: -700px;}
+    100% { left: 1500px;}
+}
+@-o-keyframes marioDrive{
+    0% { left: -700px;}
+    100% { left: 1500px;}
+}
+@keyframes marioDrive{
+    0% { left: -700px;}
+    100% { left: 1500px;}
+}
+
+/* BLOCK 2 (BRICK) */
+#block2{
+    left: 11px;
+}
+/* when this block is clicked, a coin will pop up */
+#block2:checked ~ #coin1{
+    visibility: visible;
+}
+
+/* BLOCK 3 (QUESTIONMARK) */
+#block3{
+    left: 70px;
+}
+/* a Mega-mushroom will pop up, and toad will be walk towards it.
+    He will be affected by it, and become really large.
+    Then he will float away */
+#block3:checked ~ #megaShroom{
+    animation: shroomWalk 5s linear 0s forwards;
+    visibility: visible;
+}
+#block3:checked ~ #toad{
+    animation: toadWalk 10s linear 3s;
+}
+@-webkit-keyframes shroomWalk{
+    0%{ left: 50px;
+        bottom: 290px; 
+        -webkit-transform: scaleY(0.7);
+        -moz-transform: scaleY(0.7);
+        -o-transform: scaleY(0.7);
+        transform: scaleY(0.7);
+    }
+    15%{ -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+        bottom: 310px;}
+    30%{ left: 310px; 
+        bottom: 310px;}
+    50%{ left: 310px; 
+        bottom: 80px;}
+    60%{ left: 370px;
+        bottom: 80px;}
+    99%{ left: 120px;
+        bottom: 80px;}
+    100%{ visibility: hidden;}
+}
+@-moz-keyframes shroomWalk{
+    0%{ left: 50px;
+        bottom: 290px; 
+        -webkit-transform: scaleY(0.7);
+        -moz-transform: scaleY(0.7);
+        -o-transform: scaleY(0.7);
+        transform: scaleY(0.7);
+    }
+    15%{ -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+        bottom: 310px;}
+    30%{ left: 310px; 
+        bottom: 310px;}
+    50%{ left: 310px; 
+        bottom: 80px;}
+    60%{ left: 370px;
+        bottom: 80px;}
+    99%{ left: 120px;
+        bottom: 80px;}
+    100%{ visibility: hidden;}
+}
+@-o-keyframes shroomWalk{
+    0%{ left: 50px;
+        bottom: 290px; 
+        -webkit-transform: scaleY(0.7);
+        -moz-transform: scaleY(0.7);
+        -o-transform: scaleY(0.7);
+        transform: scaleY(0.7);
+    }
+    15%{ -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+        bottom: 310px;}
+    30%{ left: 310px; 
+        bottom: 310px;}
+    50%{ left: 310px; 
+        bottom: 80px;}
+    60%{ left: 370px;
+        bottom: 80px;}
+    99%{ left: 120px;
+        bottom: 80px;}
+    100%{ visibility: hidden;}
+}
+@keyframes shroomWalk{
+    0%{ left: 50px;
+        bottom: 290px; 
+        -webkit-transform: scaleY(0.7);
+        -moz-transform: scaleY(0.7);
+        -o-transform: scaleY(0.7);
+        transform: scaleY(0.7);
+    }
+    15%{ -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+        bottom: 310px;}
+    30%{ left: 310px; 
+        bottom: 310px;}
+    50%{ left: 310px; 
+        bottom: 80px;}
+    60%{ left: 370px;
+        bottom: 80px;}
+    99%{ left: 120px;
+        bottom: 80px;}
+    100%{ visibility: hidden;}
+}
+@-webkit-keyframes toadWalk{
+    0%{ left: -200px }
+    20%{ left: 80px;
+        width: 150px;}
+    40%{ left: 80px;
+        width: 500px}
+    100%{ left: 1500px; 
+        width: 500px;}
+}
+@-moz-keyframes toadWalk{
+    0%{ left: -200px }
+    20%{ left: 80px;
+        width: 150px;}
+    40%{ left: 80px;
+        width: 500px}
+    100%{ left: 1500px; 
+        width: 500px;}
+}
+@-o-keyframes toadWalk{
+    0%{ left: -200px }
+    20%{ left: 80px;
+        width: 150px;}
+    40%{ left: 80px;
+        width: 500px}
+    100%{ left: 1500px; 
+        width: 500px;}
+}
+@keyframes toadWalk{
+    0%{ left: -200px }
+    20%{ left: 80px;
+        width: 150px;}
+    40%{ left: 80px;
+        width: 500px}
+    100%{ left: 1500px; 
+        width: 500px;}
+}
+
+/* BLOCK 4 (BRICK) */
+#block4{
+    left: 127px;
+}
+/* when this block is clicked, a coin will pop up */
+#block4:checked ~ #coin2{
+    visibility: visible;
+}
+/* BLOCK 5 (QUESTIONMARK) */
+#block5{
+    left: 185px;
+}
+/* a star will pop up and go crazy across the screen */
+#block5:checked ~ #star{
+    animation: superStar 3s linear 0s infinite;
+    visibility: visible;
+}
+@-webkit-keyframes superStar{
+    0%{ left: 170px;
+        bottom: 310px;}
+    10%{ left: 170px;
+        bottom: 400px;}
+    30%{ left: 900px;
+        bottom: 310px;}
+    50%{ left: 0px;
+        bottom: 1000px;}
+    70%{ left: 500px;
+        bottom: 0px; }
+    100%{ left: 1500px;
+        bottom: 500px;}
+}
+@-moz-keyframes superStar{
+    0%{ left: 170px;
+        bottom: 310px;}
+    10%{ left: 170px;
+        bottom: 400px;}
+    30%{ left: 900px;
+        bottom: 310px;}
+    50%{ left: 0px;
+        bottom: 1000px;}
+    70%{ left: 500px;
+        bottom: 0px; }
+    100%{ left: 1500px;
+        bottom: 500px;}
+}
+@-o-keyframes superStar{
+    0%{ left: 170px;
+        bottom: 310px;}
+    10%{ left: 170px;
+        bottom: 400px;}
+    30%{ left: 900px;
+        bottom: 310px;}
+    50%{ left: 0px;
+        bottom: 1000px;}
+    70%{ left: 500px;
+        bottom: 0px; }
+    100%{ left: 1500px;
+        bottom: 500px;}
+}
+@keyframes superStar{
+    0%{ left: 170px;
+        bottom: 310px;}
+    10%{ left: 170px;
+        bottom: 400px;}
+    30%{ left: 900px;
+        bottom: 310px;}
+    50%{ left: 0px;
+        bottom: 1000px;}
+    70%{ left: 500px;
+        bottom: 0px; }
+    100%{ left: 1500px;
+        bottom: 500px;}
+}
+
+/* BLOCK 6 (BRICK) */
+#block6{
+    left: 242px;
+}
+/* when this block is clicked, a coin will pop up */
+#block6:checked ~ #coin3{
+    visibility: visible;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Yosho</title>
+        <meta charset="utf-8"/>
+        <link href="MainPagez.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body> <!--HUSK Å FIKSE ALLE KEYFRAMES, TRANSITIONS, RYDDIGHET, cursor pointer, OVERFLOWW-->
+        <!-- This should autoplay if you dont use the newest version of Chrome.
+            You can try opening it in ex Edge, just to see that it works (Else you could click the play icon) -->
+        <audio controls autoplay loop>
+            <source src="Resources/Dire_Dire_Docks.mp3" type="audio/mpeg" id="audio"/>
+        </audio>
+        <div class="container">
+            <img src="Resources/Background.jpg" id="background" alt="Background"/>
+            
+            <!-- Paralax effect in the background -->
+            <div id="paralaxCastle"></div>
+            
+            <!-- Forground so that the paralax effect come in the background -->
+            <img src="Resources/Forground.png" id="forground" alt="Forground"/>
+            
+            <!-- Teleporter globe that takes you to the first page-->
+            <div id="globeContainer">
+                <a href="FirstPage.html">
+                    <img src="Resources/globe.png" id="globe" alt="Globe"/>
+                </a>
+            </div>
+
+            <!-- Floating, smiling cloud -->
+            <div id="cloud"></div>
+
+            <!-- Lakitu that comes out from behind the Magical Cloud -->
+            <div id="lakituContain"><br><br>Magical Cloud
+                <img src="Resources/Lakitu.png" id="lakitu" alt="Lakitu"/>
+            </div>
+
+            <!-- Daisy and Mario racing over the screen-->
+            <img src="Resources/Daisy.png" id="daisy" alt="Lakitu"/>
+            <img src="Resources/Mario.png" id="mario" alt="Lakitu"/>
+            
+            <!-- Pirhana Plant coming up from the pipe-->
+            <div id="pirhanaContain">
+                <img src="Resources/Pirhana.png" id="pirhana" alt="Pirhana-Plant"/>
+            </div>
+            
+            <!-- All clickable blocks, and the images that -->
+            <div class="checkboxes">
+                <input type="checkbox" id="block1" class="blocks"/>
+                <div id="yoshi"></div>
+                <img src="Resources/MarioShell.png" id="marioShell" alt="Mario-w/-Shell"/>
+                <img src="Resources/Shell.png" id="shell" alt="Green-Shell"/>
+            
+                <input type="checkbox" id="block2" class="blocks"/>
+
+                <input type="checkbox" id="block3" class="blocks"/>
+                <img src="Resources/MegaShroom.png" id="megaShroom" alt="Mega-Shroom"/>
+                <img src="Resources/Toad.png" id="toad" alt="Toad"/>
+                
+
+                <input type="checkbox" id="block4" class="blocks"/>
+                <input type="checkbox" id="block5" class="blocks"/>
+                <img src="Resources/Star.gif" id="star" alt="Star"/>
+                
+                <input type="checkbox" id="block6" class="blocks"/>
+                <img src="Resources/Coin.gif" class="coins" id="coin1" alt="Coin"/>
+                <img src="Resources/Coin.gif" class="coins" id="coin2" alt="Coin"/>
+                <img src="Resources/Coin.gif" class="coins" id="coin3" alt="Coin"/>
+            </div>
+
+            <!-- A black cover with 0.5 opacity
+                to make it look like its getting darker 
+                when hovering the stormy cloud. -->
+            <div id="dark"></div>
+        </div>
+    </body>
+</html>
